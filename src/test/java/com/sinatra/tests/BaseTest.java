@@ -1,8 +1,8 @@
-package com.imdb.tests;
+package com.sinatra.tests;
 
-import com.imdb.pages.CreateAccountPage;
-import com.imdb.pages.HomePage;
-import com.imdb.pages.LoginPage;
+import com.sinatra.pages.HomePage;
+import com.sinatra.pages.LoginPage;
+import com.sinatra.pages.SongsPage;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
@@ -12,24 +12,24 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
 
-
-    WebDriver driver;
-
-    protected HomePage home;
-    protected LoginPage login;
-    protected CreateAccountPage createAccount;
+    public WebDriver driver;
+    public HomePage home;
+    public LoginPage login;
+    public SongsPage songs;
 
     @Before
-    public void setUp() {
+    public void before() {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         home = new HomePage(driver);
         login = new LoginPage(driver);
-        createAccount = new CreateAccountPage(driver);
+        songs = new SongsPage(driver);
+
     }
 
     @After
-    public void tearDown() {
+    public void after() {
         driver.quit();
+
     }
 }
